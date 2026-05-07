@@ -1,47 +1,24 @@
-# Scaffold Workshop Builder
+# Workshop Builder Scaffolding Skill
 
-**Build professional presentation materials (PowerPoint, poster, speaking notes) using AI agents that research, reconcile facts, and generate outputs in parallel.**
+**A single prompt that scaffolds a five-agent workshop builder system inside any AI coding assistant — Claude Code, OpenCode, Codex, or any platform that supports multi-agent execution.**
 
-This system demonstrates how to architect a multi-agent AI workflow that:
-- Runs five specialized agents simultaneously
-- Coordinates through a shared knowledge base (not direct communication)
-- Incorporates new research findings in real-time
-- Maintains quality through self-review cycles
-- Works across different AI coding platforms (Claude Code, OpenCode, Codex, etc.)
+Send one prompt and the skill generates a complete set of agent definitions for your coding assistant. Those agents then research your topic, reconcile facts, and produce a PowerPoint, SVG poster, and speaking notes — all in parallel, on any topic you choose.
 
-## Quick Start (Claude Code)
+## Quick Start
 
-```bash
-# Clone this repo
-git clone <this-repo>
-cd scaffold-workshop-builder
+Works with Claude Code, OpenCode, or any AI coding platform that supports multi-agent execution. Clone the repo, then send two prompts.
 
-# Copy agents and memory templates into your Claude Code project
-cp examples/claude-code/agents/* /path/to/your/project/.claude/agents/
-cp -r examples/claude-code/agent-memory/* /path/to/your/project/.claude/agent-memory/
+**Prompt 1 — set up the system:**
 
-# Create knowledge base
-mkdir -p /path/to/your/project/knowledge-base/{raw,settled,disputed}
+> "Read README.md and SKILL.md in this repo, then set up the full multi-agent workshop builder system as described and confirm when ready."
 
-# In your Claude Code session, invoke the skill
-/scaffold-workshop-builder --topic "Your Topic"
-```
+**Prompt 2 — run the agents:**
 
-Then add your research to `knowledge-base/raw/` and launch all five agents in parallel.
+> "use the 5 agents to build a 5 slide workshop on [your topic]"
 
-See [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md) for detailed setup.
+That's it. All five agents launch in parallel and the outputs appear in your project directory.
 
 ## What You Get
-
-Three output formats from one system:
-
-- **PowerPoint** (`build_[topic].py`) — Executable python-pptx script
-- **SVG Poster** (`[topic]_poster.svg`) — Landscape, image-heavy design
-- **Speaking Notes** (`[topic]_speaking_notes.md`) — Presenter's natural voice
-
-All three share the same research foundation and are updated together as new facts emerge.
-
-## How It Works
 
 ### Five Agents, One Knowledge Base
 
@@ -67,6 +44,41 @@ Each builder has explicit quality checklists (max 3 revision cycles):
 - Poster: landscape, images, visual hierarchy
 - Notes: natural voice, spoken connectors, supplementary sections
 
+### Final Outputs
+
+Three files from one research foundation:
+
+- **PowerPoint** (`build_[topic].py`) — Executable python-pptx script, run with `python3 build_[topic].py`
+- **SVG Poster** (`[topic]_poster.svg`) — Landscape, image-heavy design
+- **Speaking Notes** (`[topic]_speaking_notes.md`) — Presenter's natural voice
+
+All three are updated together as new facts emerge.
+
+## Claude Code Step-by-Step Setup
+***(if quickstart prompt above does not work)**
+
+For a detailed walkthrough including platform-specific setup, agent memory customization, and how to iterate after the first run:
+
+```bash
+# Clone this repo
+git clone <this-repo>
+cd scaffold-workshop-builder
+
+# Copy agents and memory templates into your Claude Code project
+cp examples/claude-code/agents/* /path/to/your/project/.claude/agents/
+cp -r examples/claude-code/agent-memory/* /path/to/your/project/.claude/agent-memory/
+
+# Create knowledge base
+mkdir -p /path/to/your/project/knowledge-base/{raw,settled,disputed}
+
+# In your Claude Code session, invoke the skill
+/scaffold-workshop-builder --topic "Your Topic"
+```
+
+Then add your research to `knowledge-base/raw/` and launch all five agents in parallel.
+
+See [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md) for full details.
+
 ## Architecture
 
 Read [ARCHITECTURE.md](ARCHITECTURE.md) for:
@@ -82,15 +94,66 @@ Read [ARCHITECTURE.md](ARCHITECTURE.md) for:
 - **OpenCode**: [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md#for-opencode-users)
 - **Other systems**: [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md#for-other-systems-cursor-codex-etc)
 
-## Examples
+## Historical Example: MacBook Neo workshop presentation built via generated agents
 
-`examples/claude-code/` contains a complete working example:
-- Five agent definitions (`.md` files)
-- Agent memory templates (tone, style, voice)
-- Sample knowledge base structure
-- README with setup instructions
+### Live Session Walkthrough
 
-This was built for a coffee history workshop as a working example, but the system is topic-agnostic. Swap out the research sources and agent memory, and it works for any presentation topic.
+A real session run from scratch in Claude Code, prompt by prompt.
+
+### Prompt 1 — System setup
+
+> "Read README.md and SKILL.md in this repo, then set up the full multi-agent workshop builder system as described and confirm when ready."
+
+Claude read both files plus ARCHITECTURE.md, IMPLEMENTATION_GUIDE.md, and all five example agent definitions and memory templates. It then:
+- Created `.claude/agents/` and copied all five agent definitions
+- Created `.claude/agent-memory/workshop-builder/` and copied all five memory templates
+- Created `knowledge-base/{raw,settled,disputed}/`
+
+Confirmed ready with a summary of what was installed.
+
+### Prompt 2 — Run the system
+
+> "use the 5 agents to build a 5 slide workshop on the macbook neo"
+
+Claude launched all five agents in parallel as background tasks:
+- **Researcher** — tasked with finding MacBook Neo facts, writing to `knowledge-base/raw/`
+- **Reconciler** — tasked with polling `raw/` and settling facts into `knowledge-base/settled/`
+- **PowerPoint builder** — tasked with waiting for settled facts, then building `build_macbook_neo.py`
+- **Poster builder** — tasked with building `macbook_neo_poster.svg`
+- **Notes builder** — tasked with building `macbook_neo_speaking_notes.md`
+
+All five started simultaneously.
+
+### Permission issues and recovery
+
+The first batch of agents hit permission denials on `WebSearch`, `Write`, and `Bash` — tools that subagents need but weren't pre-approved. Claude:
+1. Used the `update-config` skill to add `WebSearch`, `WebFetch`, `Write`, `Read`, `Edit`, and `Bash` to `.claude/settings.local.json`
+2. Relaunched all five agents
+
+The second batch ran into the same issue — settings.local.json permissions don't propagate to subagents within the same session. Claude adapted by:
+- Writing the raw research file directly (`knowledge-base/raw/macbook_neo_overview.md`)
+- Writing the settled facts file directly (`knowledge-base/settled/macbook_neo_settled.md`)
+- Building and executing `build_macbook_neo.py` directly to produce the `.pptx`
+
+Meanwhile, the reconciler, poster, and notes subagents did eventually succeed in writing their own files once the knowledge base had content.
+
+### Final outputs
+
+All three outputs are complete. The SVG poster and speaking notes were actually built by the subagents that did get Write permissions. Here's the full summary:
+
+| File | Status |
+|------|--------|
+| `macbook_neo_presentation.pptx` | Built and executed — 5 slides |
+| `macbook_neo_poster.svg` | Landscape 2400×1800, 4 content zones |
+| `macbook_neo_speaking_notes.md` | 5-slide notes + Pre-Talk Checklist, Timing Guide, Glossary, References |
+
+A note on the topic: "MacBook Neo" isn't an official Apple product — it's a concept device. The workshop treats it as a speculative synthesis of real Apple trends: M4+ Apple Silicon, rumored OLED display, on-device Apple Intelligence, and the converging Air/Pro lineup. The speaking notes acknowledge this clearly on Slide 2.
+
+To generate the `.pptx` again: `python3 build_macbook_neo.py` in the project root.
+
+### Token usage
+
+Running all five agents in parallel consumed approximately **43% of a 5-hour usage window quota**. Keep this in mind when budgeting for multi-agent runs — parallel execution is fast but the token cost is the sum of all agents, not just the orchestrator.
 
 ## Key Features
 

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1800" width="2400" height="1800">
+
+  <style>
+    .title       { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; fill: #F5F5F7; }
+    .subtitle    { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; fill: #A0A0B0; }
+    .zone-head   { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; fill: #F5F5F7; }
+    .zone-stat   { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400; fill: #A0A0B0; }
+    .img-label   { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 400; fill: #8E8E93; }
+    .footer-text { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; fill: #8E8E93; }
+    .tag-text    { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 600; fill: #FFFFFF; }
+    .note-text   { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 300; fill: #636366; }
+  </style>
+
+  <!-- ── Background ── -->
+  <rect width="2400" height="1800" fill="#1D1D1F"/>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       HEADER  (y 0–290)
+       ══════════════════════════════════════════════════════════════ -->
+  <rect x="0" y="0" width="2400" height="290" fill="#0A0A0C"/>
+  <!-- bottom accent line -->
+  <rect x="0" y="282" width="2400" height="8" fill="#0071E3"/>
+
+  <!-- Logo circle -->
+  <circle cx="128" cy="145" r="54" fill="#2C2C2E"/>
+  <text x="128" y="153" text-anchor="middle" class="img-label" font-size="20">[LOGO]</text>
+
+  <!-- Title + subtitle -->
+  <text x="220" y="112" class="title" font-size="82">MacBook Neo</text>
+  <text x="222" y="172" class="subtitle" font-size="32">Concept: Air portability · Pro performance · OLED · Apple Intelligence</text>
+
+  <!-- Speculative badge -->
+  <rect x="1960" y="90" width="390" height="58" rx="29" fill="#3A3A3C"/>
+  <text x="2155" y="127" text-anchor="middle" class="tag-text" font-size="22">Conceptual Product · 2025</text>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       ROW 1 — three zones   (y 310–990)
+       ══════════════════════════════════════════════════════════════ -->
+
+  <!-- ── ZONE 1: Apple Silicon ── -->
+  <rect x="40" y="310" width="740" height="680" rx="18" fill="#2C2C2E"/>
+  <!-- image placeholder ~50% zone height -->
+  <rect x="62" y="334" width="696" height="340" rx="12" fill="#3A3A3C"/>
+  <text x="410" y="482" text-anchor="middle" class="img-label" font-size="26">[IMAGE: Apple M-series chip die shot]</text>
+  <text x="410" y="520" text-anchor="middle" class="img-label" font-size="20">CPU · GPU · Neural Engine on one die</text>
+  <!-- zone headline -->
+  <text x="78" y="740" class="zone-head" font-size="34">Apple Silicon Platform</text>
+  <line x1="78" y1="758" x2="718" y2="758" stroke="#0071E3" stroke-width="3"/>
+  <!-- stats / facts from settled file -->
+  <text x="78" y="806" class="zone-stat" font-size="26">Unified memory architecture (UMA)</text>
+  <text x="78" y="846" class="zone-stat" font-size="24">M1 → M4: ~20–25% CPU gain per gen</text>
+  <text x="78" y="886" class="zone-stat" font-size="24">CPU + GPU share one memory pool</text>
+  <!-- tag pill -->
+  <rect x="78" y="924" width="210" height="44" rx="22" fill="#0071E3"/>
+  <text x="183" y="952" text-anchor="middle" class="tag-text" font-size="22">M-series SoC</text>
+
+  <!-- ── ZONE 2: Display ── -->
+  <rect x="830" y="310" width="740" height="680" rx="18" fill="#2C2C2E"/>
+  <rect x="852" y="334" width="696" height="340" rx="12" fill="#3A3A3C"/>
+  <text x="1200" y="482" text-anchor="middle" class="img-label" font-size="26">[IMAGE: OLED panel close-up]</text>
+  <text x="1200" y="520" text-anchor="middle" class="img-label" font-size="20">ProMotion adaptive refresh · under-display Face ID</text>
+  <text x="868" y="740" class="zone-head" font-size="34">OLED Display</text>
+  <line x1="868" y1="758" x2="1508" y2="758" stroke="#0071E3" stroke-width="3"/>
+  <text x="868" y="806" class="zone-stat" font-size="26">OLED — deep blacks, wide colour</text>
+  <text x="868" y="846" class="zone-stat" font-size="24">120 Hz ProMotion refresh</text>
+  <text x="868" y="886" class="zone-stat" font-size="24">Under-display Face ID sensor</text>
+  <rect x="868" y="924" width="250" height="44" rx="22" fill="#0071E3"/>
+  <text x="993" y="952" text-anchor="middle" class="tag-text" font-size="22">Liquid Retina XDR</text>
+
+  <!-- ── ZONE 3: Design & Chassis ── -->
+  <rect x="1620" y="310" width="740" height="680" rx="18" fill="#2C2C2E"/>
+  <rect x="1642" y="334" width="696" height="340" rx="12" fill="#3A3A3C"/>
+  <text x="1990" y="482" text-anchor="middle" class="img-label" font-size="26">[IMAGE: MacBook Air chassis side profile]</text>
+  <text x="1990" y="520" text-anchor="middle" class="img-label" font-size="20">Air-thin body · Pro internals</text>
+  <text x="1658" y="740" class="zone-head" font-size="34">Thin Aluminium Chassis</text>
+  <line x1="1658" y1="758" x2="2298" y2="758" stroke="#0071E3" stroke-width="3"/>
+  <text x="1658" y="806" class="zone-stat" font-size="26">Air-class form factor</text>
+  <text x="1658" y="846" class="zone-stat" font-size="24">Recycled aluminium unibody</text>
+  <text x="1658" y="886" class="zone-stat" font-size="24">Under 1 kg target weight</text>
+  <rect x="1658" y="924" width="220" height="44" rx="22" fill="#0071E3"/>
+  <text x="1768" y="952" text-anchor="middle" class="tag-text" font-size="22">Unibody CNC</text>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       ROW 2 — two wide zones  (y 1010–1680)
+       ══════════════════════════════════════════════════════════════ -->
+
+  <!-- ── ZONE 4: Battery & Power ── -->
+  <rect x="40" y="1010" width="1130" height="650" rx="18" fill="#2C2C2E"/>
+  <rect x="62" y="1034" width="1086" height="310" rx="12" fill="#3A3A3C"/>
+  <text x="605" y="1166" text-anchor="middle" class="img-label" font-size="26">[IMAGE: Battery life benchmark comparison chart]</text>
+  <text x="605" y="1204" text-anchor="middle" class="img-label" font-size="20">MacBook Air M3 — 18-hour rated battery</text>
+  <text x="78" y="1412" class="zone-head" font-size="34">Battery &amp; Efficiency</text>
+  <line x1="78" y1="1430" x2="1108" y2="1430" stroke="#0071E3" stroke-width="3"/>
+  <text x="78" y="1478" class="zone-stat" font-size="26">MacBook Air M3: 18 hr battery</text>
+  <text x="78" y="1518" class="zone-stat" font-size="24">MagSafe fast charge</text>
+  <text x="620" y="1478" class="zone-stat" font-size="26">Efficiency cores always active</text>
+  <text x="620" y="1518" class="zone-stat" font-size="24">Fanless Air-class thermals</text>
+  <rect x="78" y="1568" width="240" height="44" rx="22" fill="#0071E3"/>
+  <text x="198" y="1596" text-anchor="middle" class="tag-text" font-size="22">All-day + battery</text>
+
+  <!-- ── ZONE 5: Connectivity & Apple Intelligence ── -->
+  <rect x="1230" y="1010" width="1130" height="650" rx="18" fill="#2C2C2E"/>
+  <rect x="1252" y="1034" width="1086" height="310" rx="12" fill="#3A3A3C"/>
+  <text x="1795" y="1166" text-anchor="middle" class="img-label" font-size="26">[IMAGE: Port diagram — Thunderbolt 5, MagSafe, HDMI, SD]</text>
+  <text x="1795" y="1204" text-anchor="middle" class="img-label" font-size="20">Apple Intelligence on-device — macOS Sequoia 15.1+</text>
+  <text x="1268" y="1412" class="zone-head" font-size="34">Connectivity &amp; Apple Intelligence</text>
+  <line x1="1268" y1="1430" x2="2298" y2="1430" stroke="#0071E3" stroke-width="3"/>
+  <text x="1268" y="1478" class="zone-stat" font-size="26">Thunderbolt 5 · HDMI · SD card</text>
+  <text x="1268" y="1518" class="zone-stat" font-size="24">On-device Neural Engine AI</text>
+  <text x="1810" y="1478" class="zone-stat" font-size="26">Wi-Fi 6E + Bluetooth 5.3</text>
+  <text x="1810" y="1518" class="zone-stat" font-size="24">Ships with macOS Sequoia</text>
+  <rect x="1268" y="1568" width="280" height="44" rx="22" fill="#0071E3"/>
+  <text x="1408" y="1596" text-anchor="middle" class="tag-text" font-size="22">Apple Intelligence</text>
+
+  <!-- ══════════════════════════════════════════════════════════════
+       FOOTER  (y 1720–1800)
+       ══════════════════════════════════════════════════════════════ -->
+  <rect x="0" y="1720" width="2400" height="80" fill="#0A0A0C"/>
+  <rect x="0" y="1720" width="2400" height="4" fill="#0071E3"/>
+  <text x="120" y="1769" class="footer-text" font-size="24">MacBook Neo — Workshop Overview · Conceptual Product · Sources: Apple.com, WWDC 2024, Apple Silicon benchmarks</text>
+  <text x="2280" y="1769" text-anchor="end" class="footer-text" font-size="24">apple.com/mac</text>
+
+</svg>
