@@ -25,7 +25,7 @@ workshop-builder/
 
 **Prompt 1 — set up the system:**
 
-> "Read README.md and SKILL.md in this repo, then set up the full multi-agent workshop builder system as described and confirm when ready."
+> "Read README.md and SKILL.md. Set up the multi-agent workshop builder system using your platform's native conventions for agents, skills, and directory structure. Don't copy conventions from other platforms — adapt all paths accordingly."
 
 **Prompt 2 — run the agents:**
 
@@ -120,6 +120,8 @@ A real session run from scratch in Claude Code, prompt by prompt.
 ### Prompt 1 (System setup)
 
 > "Read README.md and SKILL.md in this repo, then set up the full multi-agent workshop builder system as described and confirm when ready."
+
+Note: This was the original prompt used before the platform-agnostic version in Quick Start above. It still works, but may copy Claude code conventions verbatim on other platforms.
 
 ### Output 1
 
