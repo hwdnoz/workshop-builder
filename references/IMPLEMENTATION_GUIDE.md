@@ -9,14 +9,14 @@ Choose your platform below and follow the setup instructions.
 1. **Clone or download this repo** into your Claude Code workspace
 2. **Copy agent definitions**:
    ```
-   cp examples/claude-code/agents/* .claude/agents/
-   cp -r examples/claude-code/agent-memory/* .claude/agent-memory/
+   cp assets/agents/* .claude/agents/
+   cp -r assets/agent-memory/* .claude/agent-memory/
    ```
 3. **Create knowledge base structure**:
    ```
    mkdir -p knowledge-base/{raw,settled,disputed}
    ```
-4. **Create `.claude/agent-memory/workshop-builder/` if it doesn't exist** and populate with tone/style files from examples
+4. **Create `.claude/agent-memory/workshop-builder/` if it doesn't exist** and populate with tone/style files from `assets/agent-memory/`
 
 ### Populate with Your Research
 
@@ -24,7 +24,7 @@ Add your research findings to `knowledge-base/raw/`:
 - Create `.md` files documenting what you've found
 - Include sources (URLs, books, authors)
 - Flag any conflicting information
-- See `examples/claude-code/` for format examples
+- See `sample-output/macbook-neo/knowledge-base/` for format examples
 
 ### Launching All Five Agents in Parallel
 
@@ -78,7 +78,7 @@ First, read [ARCHITECTURE.md](ARCHITECTURE.md) to understand:
 
 1. **Clone or download this repo**
 2. **Adapt agent definitions**:
-   - Review `examples/claude-code/agents/*.md`
+   - Review `assets/agents/*.md`
    - Convert to opencode's agent format
    - Maintain the same responsibilities and self-review checklists
 3. **Implement orchestration**:
@@ -125,13 +125,13 @@ Read [ARCHITECTURE.md](ARCHITECTURE.md) to understand the five-agent system and 
    - Three builders (PowerPoint, poster, notes)
 3. **Create knowledge base** with `raw/`, `settled/`, `disputed/` directories
 4. **Implement knowledge sync**: Builders check for new facts before each reflection
-5. **Set up self-review checklists**: Copy from examples for each builder type
+5. **Set up self-review checklists**: Copy from `assets/agents/` for each builder type
 6. **Handle orchestration**: Find your system's way to launch agents in parallel
 
 ### Reference Examples
 
-- `examples/claude-code/agents/` — See how Claude Code agent definitions work
-- `examples/claude-code/agent-memory/` — See how memory/context works
+- `assets/agents/` — See how Claude Code agent definitions work
+- `assets/agent-memory/` — See how memory/context works
 - [ARCHITECTURE.md](ARCHITECTURE.md) — Understand the system design
 
 ## Common Questions
@@ -156,7 +156,7 @@ A: Yes. Follow the pattern (read from knowledge base, write outputs to project d
 1. Choose your platform (Claude Code, OpenCode, other)
 2. Follow the setup instructions above
 3. Read [ARCHITECTURE.md](ARCHITECTURE.md) for deeper understanding
-4. Review `examples/claude-code/` to see a working implementation
+4. Review `sample-output/macbook-neo/` to see a pre-built example
 5. Customize agent memory templates for your topic and voice
 6. Populate your knowledge base with research
 7. Launch the system and iterate

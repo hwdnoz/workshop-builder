@@ -85,6 +85,7 @@ Each builder has an explicit self-review checklist (max 3 cycles):
 
 ## References
 
-- [ARCHITECTURE.md](ARCHITECTURE.md) — System design and patterns
-- [IMPLEMENTATION_GUIDE.md](IMPLEMENTATION_GUIDE.md) — How to set up for your platform
-- [examples/claude-code/](examples/claude-code/) — Complete working example from Claude Code
+- [ARCHITECTURE.md](references/ARCHITECTURE.md) — System design and patterns
+- [IMPLEMENTATION_GUIDE.md](references/IMPLEMENTATION_GUIDE.md) — How to set up for your platform
+- [assets/](assets/) — Template agent and memory files
+- [sample-output/macbook-neo/](sample-output/macbook-neo/) — Pre-built example output
