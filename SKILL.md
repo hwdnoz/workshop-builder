@@ -1,5 +1,5 @@
 ---
-name: scaffold-workshop-builder
+name: workshop-builder
 description: Scaffold a multi-agent parallel presentation builder system for any topic. Creates five specialized agents that research, reconcile facts, and generate PowerPoint, SVG poster, and speaking notes in parallel with knowledge sync checkpoints.
 ---
 
@@ -7,7 +7,7 @@ description: Scaffold a multi-agent parallel presentation builder system for any
 
 ## What This Skill Does
 
-Creates a complete multi-agent workshop presentation system tailored to any topic. When invoked, it scaffolds:
+Creates a complete multi-agent workshop presentation system tailored to any topic. When invoked, it initializes:
 - Five specialized agents (researcher, reconciler, pptx builder, poster builder, notes builder)
 - Knowledge base structure (raw findings, settled facts, disputed claims)
 - Agent memory templates (tone, style, voice guidelines)
@@ -23,7 +23,7 @@ Invoke this skill when you want to:
 ## Quick Start
 
 ```
-/scaffold-workshop-builder --topic "Your Presentation Topic"
+/workshop-builder --topic "Your Presentation Topic"
 ```
 
 This creates:

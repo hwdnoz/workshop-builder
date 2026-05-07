@@ -1,8 +1,8 @@
-# Workshop Builder Scaffolding Skill
+# Workshop Builder Skill
 
-**A single prompt that scaffolds a five-agent workshop builder system inside any AI coding assistant — Claude Code, OpenCode, Codex, or any platform that supports multi-agent execution.**
+This repo contains a skill that initializes a multi-agent system that can build workshop presentations — researching a topic, reconciling facts, and generating a PowerPoint, SVG poster, and speaking notes in parallel.
 
-Send one prompt and the skill generates a complete set of agent definitions for your coding assistant. Those agents then research your topic, reconcile facts, and produce a PowerPoint, SVG poster, and speaking notes — all in parallel, on any topic you choose.
+From there, the user can run the newly initialized multi-agent system to build workshops in whatever AI coding environment they choose — Claude Code, OpenCode, or any other platform that supports multi-agent execution.
 
 ## What Is the Skill
 
@@ -77,7 +77,7 @@ For a detailed walkthrough including platform-specific setup, agent memory custo
 ```bash
 # Clone this repo
 git clone <this-repo>
-cd scaffold-workshop-builder
+cd workshop-builder
 
 # Copy agents and memory templates into your Claude Code project
 cp assets/agents/* /path/to/your/project/.claude/agents/
@@ -87,7 +87,7 @@ cp -r assets/agent-memory/* /path/to/your/project/.claude/agent-memory/
 mkdir -p /path/to/your/project/knowledge-base/{raw,settled,disputed}
 
 # In your Claude Code session, invoke the skill
-/scaffold-workshop-builder --topic "Your Topic"
+/workshop-builder --topic "Your Topic"
 ```
 
 Then add your research to `knowledge-base/raw/` and launch all five agents in parallel.
