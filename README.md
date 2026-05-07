@@ -109,7 +109,9 @@ Read [ARCHITECTURE.md](references/ARCHITECTURE.md) for:
 - **OpenCode**: [IMPLEMENTATION_GUIDE.md](references/IMPLEMENTATION_GUIDE.md#for-opencode-users)
 - **Other systems**: [IMPLEMENTATION_GUIDE.md](references/IMPLEMENTATION_GUIDE.md#for-other-systems-cursor-codex-etc)
 
-## Historical Example: MacBook Neo workshop presentation built via generated agents
+## Historical Example: MacBook Neo
+
+This is an example where a workshop presentation on the topic of the Macbook Neo was built via the newly generated workshop builder agents. Below are the prompts and some observed outputs.
 
 ### Live Session Walkthrough
 
