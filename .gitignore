@@ -1,2 +1,7 @@
 # Claude Code local settings (machine-specific paths, no personal data)
 .claude/settings.local.json
+
+# presentation-coach generated artifacts
+presentation-coach/backend/venv/
+presentation-coach/frontend/node_modules/
+presentation-coach/frontend/dist/
