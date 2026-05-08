@@ -197,6 +197,47 @@ Running all five agents in parallel consumed approximately **43% of a 5-hour usa
 5. Add your research to the knowledge base
 6. Launch all five agents and iterate
 
+## Presentation Coach
+
+A local web app for practicing your talk and refining your speaking notes.
+
+```
+presentation-coach/
+├── Makefile
+├── backend/          ← FastAPI + Whisper + Ollama
+└── frontend/         ← React/Vite UI
+```
+
+### What it does
+
+Record yourself practicing a section → Whisper transcribes it locally → Mistral 7B rewrites your speaking notes to clean up the delivery (removes filler words, repetition, run-ons) without changing your voice or tone. Also gives brief coaching feedback on your pacing, clarity, and energy.
+
+### Prerequisites
+
+```bash
+brew install ollama ffmpeg
+ollama pull mistral:7b
+```
+
+### Run
+
+```bash
+cd presentation-coach
+make
+```
+
+Open [http://localhost:5173](http://localhost:5173). Ollama starts automatically if it's not already running.
+
+### Configuring the notes file
+
+By default the backend looks for `speaking_notes.md` two directories above `backend/`. Override with:
+
+```bash
+NOTES_PATH=/path/to/your/notes.md make
+```
+
+---
+
 ## License
 
 [Add your license here]
