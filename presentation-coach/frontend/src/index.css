@@ -202,3 +202,76 @@ button:disabled {
 .suggestions-box p {
   margin-bottom: 0.75rem;
 }
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-save {
+  background: transparent;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+}
+
+.btn-save:hover {
+  background: var(--gold);
+  color: var(--bg-dark);
+}
+
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.confirm-dialog {
+  background: var(--panel-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 2rem;
+  max-width: 420px;
+  width: 90%;
+}
+
+.confirm-dialog p {
+  color: var(--white);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.confirm-sub {
+  color: var(--mid-gray) !important;
+  font-size: 0.85rem !important;
+  margin-bottom: 1.5rem !important;
+}
+
+.confirm-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+.btn-cancel {
+  background: transparent;
+  color: var(--mid-gray);
+  border: 1px solid var(--border);
+}
+
+.btn-confirm {
+  background: var(--gold);
+  color: var(--bg-dark);
+  border: none;
+}

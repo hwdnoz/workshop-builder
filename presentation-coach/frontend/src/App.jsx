@@ -3,20 +3,27 @@ import ReactMarkdown from 'react-markdown'
 
 const API = 'http://localhost:8000'
 
+function extractUpdatedNotes(raw) {
+  const match = raw.match(/##\s*Updated Speaking Notes\s*\n([\s\S]*?)(?=\n##\s*Coaching Feedback|$)/)
+  return match ? match[1].trim() : null
+}
+
 export default function App() {
-  const [notes, setNotes] = useState('')
+  const [notes, setNotes] = useState(null)
 
   useEffect(() => {
     fetch(`${API}/notes`)
       .then((r) => r.json())
       .then((d) => setNotes(d.notes))
-      .catch(() => {})
+      .catch(() => setNotes(''))
   }, [])
+
   const [transcript, setTranscript] = useState('')
   const [suggestions, setSuggestions] = useState('')
   const [recording, setRecording] = useState(false)
   const [status, setStatus] = useState('')
   const [streaming, setStreaming] = useState(false)
+  const [confirmSave, setConfirmSave] = useState(false)
 
   const mediaRef = useRef(null)
   const chunksRef = useRef([])
@@ -100,6 +107,35 @@ export default function App() {
     }
   }
 
+  async function saveNotes() {
+    const updatedNotes = extractUpdatedNotes(suggestions)
+    if (!updatedNotes) {
+      setStatus('Could not extract updated notes from output.')
+      setConfirmSave(false)
+      return
+    }
+    try {
+      const res = await fetch(`${API}/save`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ content: updatedNotes }),
+      })
+      const data = await res.json()
+      if (data.saved) {
+        setNotes(updatedNotes)
+        setStatus('Notes saved.')
+      } else {
+        setStatus(`Save failed: ${data.error}`)
+      }
+    } catch (err) {
+      setStatus(`Save failed: ${err.message}`)
+    } finally {
+      setConfirmSave(false)
+    }
+  }
+
+  const updatedNotesPreview = suggestions ? extractUpdatedNotes(suggestions) : null
+
   return (
     <>
       <header>
@@ -107,15 +143,28 @@ export default function App() {
         <span>Record · Transcribe · Improve</span>
       </header>
 
+      {confirmSave && (
+        <div className="confirm-overlay">
+          <div className="confirm-dialog">
+            <p>Save updated speaking notes to your notes file?</p>
+            <p className="confirm-sub">This will overwrite your current notes with the updated version.</p>
+            <div className="confirm-actions">
+              <button className="btn-cancel" onClick={() => setConfirmSave(false)}>Cancel</button>
+              <button className="btn-confirm" onClick={saveNotes}>Save</button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="layout">
         {/* Left panel: notes + recording + transcript */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', overflow: 'hidden' }}>
           <div className="panel" style={{ flex: '0 0 45%' }}>
             <div className="panel-header">Speaking Notes</div>
             <textarea
-              value={notes}
+              value={notes ?? ''}
               onChange={(e) => setNotes(e.target.value)}
-              placeholder="Loading speaking notes..."
+              placeholder={notes === null ? 'Loading...' : notes === '' ? 'No speaking notes found. Paste yours here or set NOTES_PATH.' : ''}
             />
           </div>
 
@@ -144,9 +193,16 @@ export default function App() {
           </div>
         </div>
 
-        {/* Right panel: updated notes */}
+        {/* Right panel: updated notes + coaching feedback */}
         <div className="panel">
-          <div className="panel-header">Updated Speaking Notes</div>
+          <div className="panel-header">
+            Updated Speaking Notes
+            {updatedNotesPreview && !streaming && (
+              <button className="btn-save" onClick={() => setConfirmSave(true)}>
+                Save Changes
+              </button>
+            )}
+          </div>
           {suggestions ? (
             <div className="suggestions-box">
               <ReactMarkdown>{suggestions}</ReactMarkdown>

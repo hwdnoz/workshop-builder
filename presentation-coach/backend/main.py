@@ -63,6 +63,18 @@ _prompt_path = os.path.join(os.path.dirname(__file__), "system_prompt.md")
 with open(_prompt_path, "r") as f:
     SYSTEM_PROMPT = f.read()
 
+@app.post("/save")
+async def save_notes(request: Request):
+    body = await request.json()
+    content = body["content"]
+    path = os.path.abspath(NOTES_PATH)
+    try:
+        with open(path, "w") as f:
+            f.write(content)
+        return {"saved": True, "path": path}
+    except Exception as e:
+        return {"saved": False, "error": str(e)}
+
 @app.post("/suggest")
 async def suggest(request: Request):
     body = await request.json()
