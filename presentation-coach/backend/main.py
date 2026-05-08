@@ -46,8 +46,11 @@ def _run_whisper(audio_bytes: bytes) -> str:
 
 @app.get("/notes")
 async def get_notes():
-    with open(os.path.abspath(NOTES_PATH), "r") as f:
-        return {"notes": f.read()}
+    try:
+        with open(os.path.abspath(NOTES_PATH), "r") as f:
+            return {"notes": f.read()}
+    except FileNotFoundError:
+        return {"notes": ""}
 
 @app.post("/transcribe")
 async def transcribe(audio: UploadFile = File(...)):
