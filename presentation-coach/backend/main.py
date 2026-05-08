@@ -59,19 +59,9 @@ async def transcribe(audio: UploadFile = File(...)):
     transcript = await loop.run_in_executor(None, _run_whisper, audio_bytes)
     return {"transcript": transcript.strip()}
 
-SYSTEM_PROMPT = """You are helping a presenter refine their speaking notes after a practice run.
-
-You will receive their original speaking notes and a transcript of what they actually said.
-
-Your job is to rewrite the speaking notes so they reflect how the presenter naturally speaks. Where the transcript shows better phrasing, more natural flow, or useful additions — incorporate those into the notes. Where the transcript shows stumbles, repetition, or gaps — fix them using the original notes as a guide.
-
-Return exactly these two sections with these exact headers:
-
-## Updated Speaking Notes
-The full rewritten speaking notes. Same structure and length as the original. First person, present tense, spoken-word style.
-
-## What Changed
-3-5 bullet points — specific changes you made and why. Reference actual moments from the transcript where relevant."""
+_prompt_path = os.path.join(os.path.dirname(__file__), "system_prompt.md")
+with open(_prompt_path, "r") as f:
+    SYSTEM_PROMPT = f.read()
 
 @app.post("/suggest")
 async def suggest(request: Request):
