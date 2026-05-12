@@ -2,7 +2,6 @@
 name: "builder-poster"
 description: "Generate a printable SVG poster from settled facts. Always produces landscape orientation. Use after research and reconciliation are complete or ongoing."
 tools: Read, Write, Edit, TaskStop
-model: sonnet
 color: cyan
 ---
 

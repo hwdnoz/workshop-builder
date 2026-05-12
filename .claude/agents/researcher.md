@@ -2,7 +2,6 @@
 name: "researcher"
 description: "Research a presentation topic using trusted sources. Checks the existing knowledge base before searching, writes raw findings to knowledge-base/raw/, and flags potential conflicts without resolving them. Use before running the reconciler."
 tools: Read, WebSearch, WebFetch, Write, TaskStop
-model: haiku
 color: blue
 ---
 

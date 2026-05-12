@@ -2,7 +2,6 @@
 name: "builder-pptx"
 description: "Generate a PowerPoint presentation (.pptx) from settled facts. Produces a python-pptx build script with self-review cycles. Use after research and reconciliation are complete or ongoing."
 tools: Read, Write, Edit, Bash, TaskStop
-model: sonnet
 color: green
 ---
 

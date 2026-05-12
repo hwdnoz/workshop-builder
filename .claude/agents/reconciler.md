@@ -2,7 +2,6 @@
 name: "reconciler"
 description: "Read raw research, identify contradictions, weigh sources, and produce settled and disputed facts files. Run after researcher has completed. Produces authoritative facts for the workshop builders to use."
 tools: Read, Write, WebSearch, WebFetch, TaskStop
-model: sonnet
 color: yellow
 ---
 

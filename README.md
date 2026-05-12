@@ -4,9 +4,10 @@ A skill that initializes a multi-agent system for building workshop presentation
 
 ## Quick Start
 
-```
-/workshop-builder
-```
+| Platform | Command |
+|----------|---------|
+| Claude Code | `/workshop-builder` |
+| Opencode | `run workshop-builder` |
 
 Then:
 
@@ -89,9 +90,16 @@ Record yourself practicing a section → Whisper transcribes it locally → Mist
 ### Prerequisites
 
 ```bash
-brew install ollama ffmpeg
-ollama pull mistral:7b
+brew install ffmpeg
 ```
+
+> **Note:** The `/suggest` endpoint (which rewrites speaking notes via Mistral 7B) requires Ollama. If you don't have Ollama installed or don't need AI rewriting, comment out the `ollama pull` step and the `/suggest` route in `backend/main.py` — the transcription and save features will still work.
+>
+> To enable the full experience:
+> ```bash
+> brew install ollama
+> ollama pull mistral:7b
+> ```
 
 ### Run
 

@@ -2,7 +2,6 @@
 name: "builder-notes"
 description: "Generate markdown speaking notes from settled facts. Writes in the presenter's natural voice. Use after research and reconciliation are complete or ongoing."
 tools: Read, Write, Edit, TaskStop
-model: sonnet
 color: orange
 ---
 
